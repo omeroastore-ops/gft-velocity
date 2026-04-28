@@ -1,16 +1,51 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect, useState } from "react";
+import Lenis from "lenis";
+import { I18nProvider } from "@/lib/i18n";
+import { TopBar } from "@/components/site/TopBar";
+import { Hero } from "@/components/site/Hero";
+import { Services } from "@/components/site/Services";
+import { Fleet } from "@/components/site/Fleet";
+import { Careers } from "@/components/site/Careers";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
+import { QuoteModal } from "@/components/site/QuoteModal";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [quoteOpen, setQuoteOpen] = useState(false);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    let raf = 0;
+    const tick = (time: number) => {
+      lenis.raf(time);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <I18nProvider>
+      <div className="min-h-screen bg-background text-foreground font-sans">
+        <TopBar onOpenQuote={() => setQuoteOpen(true)} />
+        <main>
+          <Hero onOpenQuote={() => setQuoteOpen(true)} />
+          <Services />
+          <Fleet />
+          <Careers />
+          <Contact />
+        </main>
+        <Footer />
+        <QuoteModal open={quoteOpen} onClose={() => setQuoteOpen(false)} />
+      </div>
+    </I18nProvider>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;

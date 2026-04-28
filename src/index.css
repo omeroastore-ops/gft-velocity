@@ -2,95 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================================
+   GFT German Freight Transport — Techno-Eleganz Design System
+   Dark base · Neon Blue · Radiant Gold · Silver
+   All colors HSL.
+   ============================================================ */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core surfaces */
+    --background: 222 47% 4%;            /* deep near-black */
+    --foreground: 210 20% 96%;            /* near white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 222 40% 7%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand: Neon Blue */
+    --primary: 200 100% 55%;              /* #1FB6FF-ish */
+    --primary-foreground: 222 47% 5%;
+    --primary-glow: 200 100% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Brand: Radiant Gold */
+    --gold: 43 78% 55%;                   /* #d4af37-ish */
+    --gold-foreground: 222 47% 5%;
+    --gold-glow: 47 92% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Neutral / silver */
+    --secondary: 220 14% 14%;
+    --secondary-foreground: 210 20% 96%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 14% 12%;
+    --muted-foreground: 215 16% 65%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 200 100% 55%;
+    --accent-foreground: 222 47% 5%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
 
-    --radius: 0.5rem;
+    --border: 220 20% 18%;
+    --input: 220 20% 14%;
+    --ring: 200 100% 55%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.875rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(222 47% 4% / 0.2) 0%, hsl(222 47% 4% / 0.55) 55%, hsl(222 47% 4% / 0.9) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-glow)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(210 40% 90% / 0.07) 0%, hsl(210 40% 90% / 0.02) 100%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Shadows / glows */
+    --shadow-neon: 0 0 0 1px hsl(var(--primary) / 0.4), 0 10px 40px -10px hsl(var(--primary) / 0.55);
+    --shadow-neon-strong: 0 0 30px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.3);
+    --shadow-gold: 0 0 30px hsl(var(--gold) / 0.45);
+    --shadow-elevated: 0 30px 60px -20px hsl(222 47% 0% / 0.7);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar (kept defaults so shadcn sidebar component still works) */
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 200 100% 55%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 220 14% 14%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 200 100% 55%;
   }
 
+  /* Force dark visual system regardless of .dark class */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 222 47% 4%;
+    --foreground: 210 20% 96%;
   }
 }
 
@@ -99,7 +84,122 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    background: hsl(var(--background));
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
+    background:
+      radial-gradient(1200px 600px at 80% -10%, hsl(var(--primary) / 0.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, hsl(var(--gold) / 0.06), transparent 60%),
+      hsl(var(--background));
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid hsl(210 40% 90% / 0.08);
+  }
+
+  .glass-strong {
+    background: linear-gradient(135deg, hsl(210 40% 90% / 0.10), hsl(210 40% 90% / 0.03));
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid hsl(210 40% 90% / 0.12);
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 18px hsl(var(--primary) / 0.55);
+  }
+
+  .gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gold-line {
+    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+    height: 1px;
+  }
+
+  .btn-neon {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300;
+    background: var(--gradient-neon);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-neon);
+  }
+  .btn-neon:hover {
+    box-shadow: var(--shadow-neon-strong);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost-neon {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--primary) / 0.5);
+    background: hsl(var(--primary) / 0.06);
+  }
+  .btn-ghost-neon:hover {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.12);
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em];
+    color: hsl(var(--gold));
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .glow-blue { box-shadow: 0 0 40px hsl(var(--primary) / 0.45); }
+  .glow-gold { box-shadow: 0 0 40px hsl(var(--gold) / 0.4); }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2.4s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.45); }
+    50% { box-shadow: 0 0 30px 4px hsl(var(--primary) / 0.55); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-draw-line {
+    animation: drawLine 1.4s ease-out forwards;
+  }
+  @keyframes drawLine {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
 }
