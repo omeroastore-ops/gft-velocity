@@ -3,9 +3,8 @@ import { de } from "@/locales/de";
 import { en } from "@/locales/en";
 
 export type Lang = "de" | "en";
-type Dict = typeof de;
 
-const dictionaries: Record<Lang, Dict> = { de, en };
+const dictionaries = { de, en } as const;
 
 interface I18nCtx {
   lang: Lang;
